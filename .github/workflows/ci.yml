@@ -1,0 +1,23 @@
+name: My First CI
+
+on: 
+  push:           # run the workflow when I push code
+    branches:
+      - main      # only on main branch
+  pull_request:   # also run when someone opens a pull request
+
+jobs:
+  build:          # job name
+    runs-on: ubuntu-latest   # the robot gets a free Linux machine
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3   # step 1: download your repo code into the runner
+
+      - name: Say Hello
+        run: echo "Hello, GitHub Actions!"   # step 2: just print a message
+
+      - name: Run a sample script
+        run: |
+          echo "This is my first workflow"
+          echo "I can write multiple commands here"
